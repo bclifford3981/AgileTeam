@@ -10,6 +10,7 @@ namespace AgentData
     public enum FieldType { Field, Office, Lab }
     public class Agent
     {
+
         [Key]
         public int AgentId { get; set; }
 
