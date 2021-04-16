@@ -28,7 +28,6 @@ namespace AgileTeam.Controllers
         var agent = agentService.GetAgent();
         return Ok(agent);
     }
-    [HttpPut]
     public async Task<IHttpActionResult> UpdateAgent([FromUri] int agentId, [FromBody] Agent updateAgent)
     {
         //check the ids if they match 
@@ -62,5 +61,41 @@ namespace AgileTeam.Controllers
 
         return Ok("The Agent information has been updated!");
     }
+    public async Task<IHttpActionResult> CreateAgent([FromBody] Agent agent)
+    {
+        if (agent is null)
+        {
+            return BadRequest("Your request body cannot be empty.");
+        }
+        //if model is valid
+        if (ModelState.IsValid)
+        {
+            //store model in database
+            _context.Agent.Add(agent);
+            int changecount = await _context.SaveChangesAsync();
 
+            return Ok("Your Agent was created!");
+        }
+
+        //the model is not valid go ahead and reject it
+        return BadRequest(ModelState);
+
+    } 
+    
+    public async Task<IHttpActionResult> GetAll()
+    {
+        List<Agent> agent = await _context.Agents.ToListAsync();
+        return Ok(agent);
+    }
+   
+    public async Task<IHttpActionResult> GetById([FromUri] int agentId)
+    {
+        Agent agent = await _context.Agent.FindAsync(id);
+
+        if (agent != null)
+        {
+            return Ok(agent);
+        }
+        return NotFound();
+    }
 }
