@@ -17,7 +17,7 @@ namespace AgentData
         [Required]
         public string LastName { get; set; }
 
-       [Required]
+        [Required]
         public Guid DbId { get; set; }
 
         public FieldType FieldType { get; set; }
