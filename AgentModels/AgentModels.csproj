@@ -85,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentCreate.cs" />
+    <Compile Include="AgentDetail.cs" />
+    <Compile Include="AgentEdit.cs" />
+    <Compile Include="AgentListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
