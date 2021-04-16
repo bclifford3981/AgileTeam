@@ -12,7 +12,7 @@ namespace AgentModels
     {
         public int AgentId { get; set; }
 
-        public string Name { get; set; }
+        public string LastName { get; set; }
 
         public FieldType FieldType { get; set; }
 
